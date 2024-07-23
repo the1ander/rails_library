@@ -1,12 +1,15 @@
 <h1>minha livraria</h1>
 
+Our library has <%= Book.public_count %> Books and counting!
 
 <ul>
     <% @book.each do |book|%>
+     <% unless book.archived? %>
     <li>
       <%= link_to book.title, book%>
     </li>
     <%end%>
+     <%end%>
 </ul>
 
 <%= link_to "Novo Livro", new_book_path%>

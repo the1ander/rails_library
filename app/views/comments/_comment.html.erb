@@ -1,3 +1,6 @@
+<% book = comment.book %>
+
+<% unless comment.archived? %>
   <p>
     <strong>Commenter:</strong>
     <%= comment.commenter %>
@@ -7,3 +10,13 @@
     <strong>Comment:</strong>
     <%= comment.body %>
   </p>
+
+  <%= form_with model: [comment.book, comment], local: true do |form| %>
+    <p>
+      <%= form.label :status %><br>
+      <%= form.select :status, Visible::VALID_STATUSES, selected: comment.status %>
+    </p>
+
+    <%= form.submit "Update Status" %>
+  <% end %>
+<% end %>

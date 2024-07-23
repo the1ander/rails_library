@@ -1,5 +1,5 @@
-<%= form_with(model: [ @book, @book.comments.build ]) do |form| %>
-<p>
+<%= form_with model: [comment.book, comment], local: true do |form| %>
+  <p>
     <%= form.label :commenter %><br>
     <%= form.text_field :commenter %>
   </p>
@@ -8,6 +8,10 @@
     <%= form.text_area :body %>
   </p>
   <p>
-    <%= form.submit %>
+    <%= form.label :status %><br>
+    <%= form.select :status, Visible::VALID_STATUSES, selected: comment.status %>
+  </p>
+  <p>
+    <%= form.submit "Save" %>
   </p>
 <% end %>
