@@ -19,4 +19,11 @@
 
     <%= form.submit "Update Status" %>
   <% end %>
+
+  <%= link_to "Deletar comentário", [comment.book, comment],
+  data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+  }%>
+
 <% end %>
